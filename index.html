@@ -89,6 +89,7 @@ footer{text-align:center;padding:2rem 1rem;color:var(--muted)}
   <button class="tab active" data-filter="morning">☀️ الصباح</button>
   <button class="tab" data-filter="evening">🌙 المساء</button>
   <button class="tab" data-filter="wakeup">⏰ الاستيقاظ</button>
+  <button class="tab" data-filter="afterprayer">🕌 بعد الصلاة</button>
   <button class="tab" data-filter="sebha">📿 المسبحة</button>
   <button class="tab" data-filter="fav">⭐ المفضلة</button>
   <button class="tab" data-filter="all">📖 الكل</button>
@@ -185,7 +186,16 @@ const ADHKAR = [
 {id:32,cat:"wakeup",title:"الحمد لله الذي أحيانا",text:"الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",repeat:1,source:"صحيح البخاري 6312، مسلم 2711",virtue:"كان النبي ﷺ يقوله إذا استيقظ من نومه."},
 {id:33,cat:"wakeup",title:"الحمد لله الذي عافاني في جسدي",text:"الْحَمْدُ لِلَّهِ الَّذِي عَافَانِي فِي جَسَدِي، وَرَدَّ عَلَيَّ رُوحِي، وَأَذِنَ لِي بِذِكْرِهِ",repeat:1,source:"الترمذي 3401 — حسّنه الألباني",virtue:"من قالها حين يصبح... (دعاء الاستيقاظ والعافية)."},
 {id:34,cat:"wakeup",title:"دعاء التقلب ليلاً (التعار)",text:"لَا إِلَهَ إِلَّا اللَّهُ الْوَاحِدُ الْقَهَّارُ، رَبُّ السَّمَاوَاتِ وَالْأَرْضِ وَمَا بَيْنَهُمَا الْعَزِيزُ الْغَفَّارُ",repeat:1,source:"الحاكم 1/540 وصححه ووافقه الذهبي، وابن حبان",virtue:"كان ﷺ إذا تضور (تقلب) من الليل قالها."},
-{id:35,cat:"wakeup",title:"خواتيم آل عمران عند الاستيقاظ",text:"﴿ إِنَّ فِي خَلْقِ السَّمَاوَاتِ وَالْأَرْضِ وَاخْتِلَافِ اللَّيْلِ وَالنَّهَارِ لَآيَاتٍ لِّأُولِي الْأَلْبَابِ ﴾ [آل عمران:190-200] كاملة",repeat:1,source:"متفق عليه: البخاري 183، مسلم 763 (من حديث ابن عباس في مبيته عند خالته ميمونة)",virtue:"قرأها النبي ﷺ حين استيقظ من الليل قبل الوضوء والتهجد."}
+{id:35,cat:"wakeup",title:"خواتيم آل عمران عند الاستيقاظ",text:"﴿ إِنَّ فِي خَلْقِ السَّمَاوَاتِ وَالْأَرْضِ وَاخْتِلَافِ اللَّيْلِ وَالنَّهَارِ لَآيَاتٍ لِّأُولِي الْأَلْبَابِ ﴾ [آل عمران:190-200] كاملة",repeat:1,source:"متفق عليه: البخاري 183، مسلم 763 (من حديث ابن عباس في مبيته عند خالته ميمونة)",virtue:"قرأها النبي ﷺ حين استيقظ من الليل قبل الوضوء والتهجد."},
+{id:36,cat:"afterprayer",title:"أستغفر الله + اللهم أنت السلام",text:"أَسْتَغْفِرُ اللَّهَ (ثلاثاً)، اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ",repeat:1,source:"صحيح مسلم 591",virtue:"كان ﷺ إذا انصرف من صلاته استغفر ثلاثاً ثم قالها."},
+{id:37,cat:"afterprayer",title:"لا مانع لما أعطيت",text:"لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، اللَّهُمَّ لَا مَانِعَ لِمَا أَعْطَيْتَ، وَلَا مُعْطِيَ لِمَا مَنَعْتَ، وَلَا يَنْفَعُ ذَا الْجَدِّ مِنْكَ الْجَدُّ",repeat:1,source:"البخاري 844، مسلم 593",virtue:"كان ﷺ يقولها في دبر كل صلاة مكتوبة."},
+{id:38,cat:"afterprayer",title:"لا حول ولا قوة إلا بالله",text:"لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ، لَا إِلَهَ إِلَّا اللَّهُ، وَلَا نَعْبُدُ إِلَّا إِيَّاهُ، لَهُ النِّعْمَةُ وَلَهُ الْفَضْلُ وَلَهُ الثَّنَاءُ الْحَسَنُ، لَا إِلَهَ إِلَّا اللَّهُ مُخْلِصِينَ لَهُ الدِّينَ وَلَوْ كَرِهَ الْكَافِرُونَ",repeat:1,source:"صحيح مسلم 594",virtue:"من تهليل ابن الزبير الذي كان يهلل به دبر كل صلاة."},
+{id:39,cat:"afterprayer",title:"اللهم أعني على ذكرك وشكرك",text:"اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",repeat:1,source:"أبو داود 1522، النسائي 1303 — صححه الألباني",virtue:"وصية النبي ﷺ لمعاذ: لا تدعن أن تقولها في دبر كل صلاة."},
+{id:40,cat:"afterprayer",title:"التسبيح والتحميد والتكبير (100)",text:"سُبْحَانَ اللَّهِ (33 مرة)، الْحَمْدُ لِلَّهِ (33 مرة)، اللَّهُ أَكْبَرُ (34 مرة) — المجموع 100",repeat:100,source:"صحيح مسلم 596",virtue:"من قالهن دبر كل صلاة غفرت خطاياه وإن كانت مثل زبد البحر (مع التهليل في رواية)."},
+{id:41,cat:"afterprayer",title:"آية الكرسي دبر كل صلاة",text:"﴿ اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ... ﴾ [البقرة:255] كاملة",repeat:1,source:"النسائي في الكبرى 9928 — صححه الألباني في صحيح الجامع 6464",virtue:"من قرأها دبر كل صلاة مكتوبة لم يمنعه من دخول الجنة إلا أن يموت."},
+{id:42,cat:"afterprayer",title:"المعوذات دبر كل صلاة",text:"سورة الإخلاص والفلق والناس — مرة واحدة دبر كل صلاة (وثلاثاً في الفجر والمغرب مع أذكار الصباح والمساء)",repeat:1,source:"أبو داود 1523، النسائي 1335 — صححه الألباني",virtue:"أمر ﷺ عقبة بن عامر أن يقرأ بالمعوذات دبر كل صلاة."},
+{id:43,cat:"both",title:"التهليل 10 مرات بعد الفجر والمغرب",text:"لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ يُحْيِي وَيُمِيتُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ — تقال عشر مرات بعد صلاة الفجر وبعد صلاة المغرب",repeat:10,source:"الترمذي 3474 — صححه الألباني",virtue:"كتبت له عشر حسنات، ومحيت عنه عشر سيئات، ورفع عشر درجات، وكان يومه في حرز من كل مكروه."},
+{id:44,cat:"afterprayer",title:"التعوذ دبر الصلاة",text:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْبُخْلِ، وَأَعُوذُ بِكَ مِنَ الْجُبْنِ، وَأَعُوذُ بِكَ أَنْ أُرَدَّ إِلَى أَرْذَلِ الْعُمُرِ، وَأَعُوذُ بِكَ مِنْ فِتْنَةِ الدُّنْيَا، وَأَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ",repeat:1,source:"صحيح البخاري 6370",virtue:"كان سعد يعلمها بنيه كما يعلم المعلم الغلمان الكتابة."}
 ];
 /* ===== حالة الأذكار + الثيم + الخط ===== */
 let state={filter:"morning",query:"",counts:{},favs:new Set()};
@@ -202,6 +212,7 @@ function filtered(){return ADHKAR.filter(a=>{
 if(state.filter==="morning"&&!(a.cat==="morning"||a.cat==="both"))return false;
 if(state.filter==="evening"&&!(a.cat==="evening"||a.cat==="both"))return false;
 if(state.filter==="wakeup"&&a.cat!=="wakeup")return false;
+if(state.filter==="afterprayer"&&a.cat!=="afterprayer")return false;
 if(state.filter==="fav"&&!state.favs.has(a.id))return false;
 if(state.query&&!(a.title+a.text+a.source).includes(state.query))return false;
 return true;});}
@@ -215,7 +226,7 @@ document.getElementById("statTotal").textContent=items.length;let done=0;list.in
 items.forEach(a=>{const left=a.repeat-(state.counts[a.id]||0);const isDone=left<=0;if(isDone)done++;
 const div=document.createElement("div");div.className="card"+(isDone?" done":"");
 div.innerHTML=`<h3>${a.id}. ${a.title}</h3>
-<div class="meta"><span class="tag repeat">🔁 ${a.repeat} ${isDone?"✓ تم":""}</span><span class="tag">${a.cat==="morning"?"☀️ صباح":a.cat==="evening"?"🌙 مساء":a.cat==="wakeup"?"⏰ استيقاظ":"☀️🌙 صباح ومساء"}</span><span class="tag src">📚 ${a.source}</span></div>
+<div class="meta"><span class="tag repeat">🔁 ${a.repeat} ${isDone?"✓ تم":""}</span><span class="tag">${a.cat==="morning"?"☀️ صباح":a.cat==="evening"?"🌙 مساء":a.cat==="wakeup"?"⏰ استيقاظ":a.cat==="afterprayer"?"🕌 بعد الصلاة":"☀️🌙 صباح ومساء"}</span><span class="tag src">📚 ${a.source}</span></div>
 <div class="dhikr-text">${a.text}</div><div class="virtue">✨ <b>الفضل:</b> ${a.virtue}</div>
 <div class="actions"><button class="btn btn-green count-btn">ذكرت (${a.repeat-left}/${a.repeat}) — اضغط</button><span class="counter">المتبقي: ${Math.max(left,0)}</span><button class="btn btn-ghost fav ${state.favs.has(a.id)?"active":""}">${state.favs.has(a.id)?"★ مفضّل":"☆ مفضلة"}</button><button class="btn btn-gold copy">📋 نسخ</button></div>`;
 div.querySelector(".count-btn").onclick=()=>{state.counts[a.id]=Math.min(a.repeat,(state.counts[a.id]||0)+1);save();render();};
