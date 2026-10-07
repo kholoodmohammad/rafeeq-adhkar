@@ -10,16 +10,20 @@
 :root{
   --olive:#6B7F3E; --olive-dark:#4E5E2B; --olive-soft:#EDF1DF;
   --bg:#FAF7EF; --card:#FFFFFF; --ink:#2E2A20; --muted:#8A8471;
-  --gold:#C9A227; --gold-soft:#F7EED3; --border:#E7DFC9;
+  --gold:#C9A227; --gold-deep:#9A7B14; --gold-soft:#F7EED3; --border:#E7DFC9;
   --danger:#B4443C; --shadow:0 8px 24px rgba(78,94,43,.10);
-  --radius:20px;
+  --shadow-lg:0 14px 34px rgba(78,94,43,.16);
+  --radius:22px;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
+::selection{background:var(--gold-soft);color:var(--olive-dark)}
+button{transition:transform .12s ease,box-shadow .15s ease,filter .15s ease}
+@media(hover:hover){.btn:hover{filter:brightness(1.06)}.opt:hover{border-color:var(--gold)}}
 body{font-family:'Tajawal',Tahoma,sans-serif;background:var(--bg);color:var(--ink);margin:0;line-height:1.9;padding-bottom:96px}
 body::before{content:'';position:fixed;inset:0;pointer-events:none;opacity:.5;z-index:0;
   background-image:url("data:image/svg+xml,%3Csvg width='140' height='140' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M70 18l9 18 20 3-14 14 3 20-18-10-18 10 3-20-14-14 20-3z' fill='none' stroke='%23C9A227' stroke-opacity='.12'/%3E%3C/svg%3E");}
-.apphead{position:sticky;top:0;z-index:30;background:linear-gradient(135deg,var(--olive-dark),var(--olive));color:#fff;padding:.9rem 1rem;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
+.apphead{position:sticky;top:0;z-index:30;background:linear-gradient(135deg,var(--olive-dark),var(--olive) 65%,#7d9248);color:#fff;padding:.9rem 1rem;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow);border-bottom:3px solid var(--gold)}
 .logo{font-family:'Amiri',serif;font-size:1.7rem;font-weight:700}
 .logo small{display:block;font-family:'Tajawal',sans-serif;font-size:.72rem;font-weight:400;opacity:.85}
 .streak{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:.25rem .9rem;font-weight:800;font-size:.95rem;white-space:nowrap}
@@ -27,12 +31,19 @@ main{max-width:720px;margin:0 auto;padding:1rem;position:relative;z-index:1}
 .view{animation:fade .28s ease}
 @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.2rem;margin:0 0 1rem;overflow:hidden;position:relative}
+.view .card{animation:rise .38s ease backwards}
+.view .card:nth-child(2){animation-delay:.06s}.view .card:nth-child(3){animation-delay:.12s}.view .card:nth-child(4){animation-delay:.18s}.view .card:nth-child(5){animation-delay:.24s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(hover:hover){.card:hover{box-shadow:var(--shadow-lg)}}
 .card.gold{border-color:var(--gold);background:linear-gradient(180deg,#FFFDF4,#FFF9E8)}
 .card h2{margin:0 0 .6rem;font-size:1.25rem;color:var(--olive-dark)}
 .card h3{margin:0 0 .4rem}
-.hero{text-align:center;background:linear-gradient(135deg,var(--olive-dark),var(--olive) 60%,#7d9248);color:#fff;border:none}
-.hero h1{font-family:'Amiri',serif;font-size:2.4rem;margin:.2rem 0;font-weight:700}
-.hero p{margin:.2rem 0 0;opacity:.92}
+.hero{text-align:center;background:linear-gradient(135deg,#3f4c22,var(--olive-dark) 45%,var(--olive) 75%,#82964b);color:#fff;border:1px solid var(--olive-dark);position:relative}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.6;background-image:url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M80 22l11 22 24 4-17 17 4 24-22-12-22 12 4-24-17-17 24-4z' fill='none' stroke='%23ffffff' stroke-opacity='.14'/%3E%3C/svg%3E");}
+.hero h1{font-family:'Amiri',serif;font-size:2.6rem;margin:.2rem 0;font-weight:700;text-shadow:0 2px 10px rgba(0,0,0,.25);position:relative}
+.hero h1::after{content:'✦ ───── ✦';display:block;font-size:.95rem;color:var(--gold-soft);letter-spacing:2px;margin-top:.15rem}
+.hero p{margin:.2rem 0 0;opacity:.93;position:relative}
+.hero .hadith{font-family:'Amiri',serif;font-size:1.02rem;color:var(--gold-soft);opacity:.9;margin-top:.35rem;position:relative}
 .btn{display:block;width:100%;border:none;border-radius:14px;padding:.85rem;font-family:inherit;font-size:1.08rem;font-weight:800;cursor:pointer;transition:transform .12s,box-shadow .12s;margin:.45rem 0}
 .btn:active{transform:scale(.97)}
 .btn-primary{background:linear-gradient(135deg,var(--olive-dark),var(--olive));color:#fff;box-shadow:0 6px 16px rgba(78,94,43,.30)}
@@ -45,8 +56,10 @@ main{max-width:720px;margin:0 auto;padding:1rem;position:relative;z-index:1}
 .stat{flex:1;background:var(--olive-soft);border-radius:14px;padding:.6rem .2rem}
 .stat b{display:block;font-size:1.35rem;color:var(--olive-dark)}
 .stat span{font-size:.82rem;color:var(--muted)}
-.pbar{height:12px;background:#EAE4D2;border-radius:999px;overflow:hidden;margin:.5rem 0}
-.pbar>div{height:100%;background:linear-gradient(90deg,var(--olive),var(--gold));border-radius:999px;transition:width .5s}
+.pbar{height:12px;background:#EAE4D2;border-radius:999px;overflow:hidden;margin:.5rem 0;position:relative}
+.pbar>div{height:100%;background:linear-gradient(90deg,var(--olive-dark),var(--olive) 55%,var(--gold));border-radius:999px;transition:width .5s;position:relative}
+.pbar>div::after{content:'';position:absolute;inset:0;border-radius:999px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);animation:shine 2.6s linear infinite}
+@keyframes shine{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
 .ayah{font-family:'Amiri',serif;font-size:1.6rem;line-height:2.2;background:#FFFDF6;border:1px solid var(--border);border-radius:14px;padding:.9rem 1rem;margin:.6rem 0;position:relative}
 .ayah .ref{display:inline-block;font-family:'Tajawal',sans-serif;font-size:.8rem;background:var(--olive-soft);color:var(--olive-dark);border-radius:999px;padding:0 .7rem;margin-right:.4rem;vertical-align:middle}
 .ayah.hidden-ayah .txt{filter:blur(9px);user-select:none}
@@ -62,7 +75,9 @@ label{font-weight:700;font-size:.95rem}
 .opt{border:2px solid var(--border);border-radius:14px;padding:.8rem;margin:.5rem 0;cursor:pointer;font-family:'Amiri',serif;font-size:1.35rem;background:#fff;transition:.15s}
 .opt:active{transform:scale(.98)}
 .opt.correct{border-color:var(--olive);background:var(--olive-soft)}
+.opt.correct::before{content:'✓ ';color:var(--olive);font-weight:800}
 .opt.wrong{border-color:var(--danger);background:#FBEDEC}
+.opt.wrong::before{content:'✕ ';color:var(--danger);font-weight:800}
 .opt.locked{pointer-events:none;opacity:.85}
 .feedback{border-radius:14px;padding:.8rem;margin:.6rem 0;font-weight:800;text-align:center}
 .feedback.good{background:var(--olive-soft);color:var(--olive-dark)}
@@ -73,18 +88,31 @@ label{font-weight:700;font-size:.95rem}
 .badge b{display:block;font-size:.9rem}
 .badge small{color:var(--muted);font-size:.75rem}
 .badge.locked{opacity:.45;filter:grayscale(1)}
-.badge.earned{border-color:var(--gold);background:linear-gradient(180deg,#FFFDF4,#FFF6DE)}
+.badge.earned{border-color:var(--gold);background:linear-gradient(180deg,#FFFDF4,#FFF3D4);box-shadow:0 6px 18px rgba(201,162,39,.25);animation:pop .4s ease}
+@keyframes pop{0%{transform:scale(.92)}60%{transform:scale(1.03)}100%{transform:scale(1)}}
 .tabbar{position:fixed;bottom:0;right:0;left:0;z-index:40;background:#fff;border-top:1px solid var(--border);display:flex;padding:.35rem .2rem calc(.35rem + env(safe-area-inset-bottom));box-shadow:0 -6px 20px rgba(0,0,0,.06)}
 .tabbar a{flex:1;text-align:center;text-decoration:none;color:var(--muted);font-size:.72rem;font-weight:700;padding:.3rem 0;border-radius:12px}
 .tabbar a .ic{display:block;font-size:1.35rem}
-.tabbar a.active{color:var(--olive-dark);background:var(--olive-soft)}
+.tabbar a.active{color:var(--olive-dark);background:var(--olive-soft);box-shadow:inset 0 3px 0 var(--gold)}
 .center{text-align:center}
 .muted{color:var(--muted);font-size:.9rem}
 .gold-t{color:var(--gold)}
 .basmala{font-family:'Amiri',serif;font-size:1.5rem;text-align:center;color:var(--olive-dark);margin:.4rem 0}
 .section-t{font-size:1.1rem;color:var(--olive-dark);border-right:4px solid var(--gold);padding-right:.6rem;margin:1.2rem 0 .4rem}
 .empty{text-align:center;color:var(--muted);padding:1.2rem;border:1.5px dashed var(--border);border-radius:14px;background:#fff}
-.score{font-size:3rem;font-weight:800;color:var(--olive-dark)}
+.score-wrap{display:flex;justify-content:center;margin:.4rem 0}
+.score-ring{transform:rotate(-90deg)}
+.score-ring .bg{stroke:#EAE4D2}
+.score-ring .fg{stroke:url(#goldgrad);stroke-linecap:round;transition:stroke-dashoffset 1s ease}
+.score-num{font-size:1.9rem;font-weight:800;fill:var(--olive-dark)}
+.score-lbl{font-size:.8rem;fill:var(--muted)}
+footer.appfoot{text-align:center;color:var(--muted);font-size:.82rem;padding:1.2rem .5rem 0;position:relative;z-index:1}
+footer.appfoot .orn{color:var(--gold)}
+.section-t{font-size:1.1rem;color:var(--olive-dark);border-right:4px solid var(--gold);padding-right:.6rem;margin:1.2rem 0 .4rem;font-weight:800}
+.streak{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:.25rem .9rem;font-weight:800;font-size:.95rem;white-space:nowrap;box-shadow:0 0 14px rgba(201,162,39,.35)}
+.ayah{box-shadow:inset 0 0 0 1px rgba(201,162,39,.08)}
+button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--olive);border-radius:99px}
 @media(min-width:700px){.hero h1{font-size:2.8rem}.ayah{font-size:1.75rem}}
 </style>
 </head>
@@ -94,6 +122,7 @@ label{font-weight:700;font-size:.95rem}
   <div class="streak" id="streakPill">🔥 0</div>
 </header>
 <main><div id="view" class="view"></div></main>
+<footer class="appfoot"><span class="orn">✦ ─── ✦</span><br>رَفِيقُ الْحَفْظ • صُنع بإتقان لخدمة كتاب الله 🌿</footer>
 <nav class="tabbar" id="tabbar">
   <a href="#/home" data-r="home"><span class="ic">🏠</span>الرئيسية</a>
   <a href="#/hifz" data-r="hifz"><span class="ic">📖</span>الحفظ</a>
@@ -163,7 +192,7 @@ function nextUnmem(n,count){var out=[],A=QURAN[n].a;for(var i=0;i<A.length&&out.
 function firstUnmemSurah(){for(var i=0;i<ORDER.length;i++){var n=ORDER[i];if(nextUnmem(n,1).length)return n;}return ORDER[0];}
 function vHome(){
   var done=surahsDone(),mc=memCount(),pct=corpusPct(),st=streak(),t=todayStr(0),td=S.memLog[t]||0,left=Math.max(0,S.goal-td),gpct=S.goal?Math.min(100,Math.round(td/S.goal*100)):0;
-  var h='<div class="card hero"><h1>رفيق الحفظ</h1><p>خطوة كل يوم… حتى يتم الحفظ</p></div>';
+  var h='<div class="card hero"><h1>رفيق الحفظ</h1><p>خطوة كل يوم… حتى يتم الحفظ</p><div class="hadith">«خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ» — متفق عليه</div></div>';
   h+='<div class="card"><h2>📊 تقدمك</h2><div class="stats3"><div class="stat"><b>'+pct+'%</b><span>نسبة الإنجاز</span></div><div class="stat"><b>'+done.length+'</b><span>سور محفوظة</span></div><div class="stat"><b>'+mc+'</b><span>آية محفوظة</span></div></div><div class="pbar"><div style="width:'+pct+'%"></div></div></div>';
   h+='<div class="card gold"><h2>🎯 هدف اليوم: '+S.goal+' آيات</h2><div class="muted">حفظت اليوم: <b>'+td+'</b> • متبقي: <b>'+left+'</b></div><div class="pbar"><div style="width:'+gpct+'%"></div></div><div class="row"><button class="btn btn-primary" onclick="App.go(\'hifz\')">ابدأ الحفظ 📖</button></div><div class="row"><button class="btn btn-gold" onclick="App.go(\'quiz\')">اختبر حفظي 🧠</button><button class="btn btn-ghost" onclick="App.go(\'review\')">مراجعتي 🔄</button></div></div>';
   h+='<div class="card center"><h2>🔥 سلسلة الحفظ: '+st+' أيام متتالية</h2><div class="muted">'+(st>0?"واصل! كل يوم يقربك من الختمة.":"ابدأ اليوم وسجّل أول يوم في سلسلتك.")+'</div><div class="row"><button class="btn btn-ghost" onclick="App.go(\'plan\')">خطتي 🗓️</button><button class="btn btn-ghost" onclick="App.go(\'achv\')">إنجازاتي 🏆</button></div></div>';
@@ -208,7 +237,7 @@ App.nextQ=function(){if(!Q)return;Q.i++;Q.lock=false;if(Q.i>=Q.qs.length){var sc
 function addFail(s,a){var k=key(s,a),f=S.rev.filter(function(r){return r.k===k;})[0];if(f){f.fails++;f.due=todayStr(0);}else{S.rev.push({k:k,added:todayStr(0),due:todayStr(0),fails:1});}}
 function vQuiz(){
   if(!Q)return '<div class="card center"><h2>🧠 اختبر حفظي</h2><p class="muted">5 أسئلة متنوعة: أكمل الآية، اختر التالية، ورتّب الآيات.<br>الأخطاء تُضاف تلقائياً لقائمة المراجعة.</p><button class="btn btn-primary" onclick="App.startQuiz()">ابدأ الاختبار 🚀</button></div>';
-  if(Q.i>=Q.qs.length){var sc=Math.round(Q.ok/Q.qs.length*100);return '<div class="card center"><h2>🎉 نتيجة الاختبار</h2><div class="score">'+sc+'%</div><div class="stats3"><div class="stat"><b>'+Q.ok+'</b><span>صحيحة ✅</span></div><div class="stat"><b>'+Q.no+'</b><span>خاطئة ❌</span></div><div class="stat"><b>'+S.best+'%</b><span>أفضل درجة</span></div></div><p>'+(sc>=80?"ممتاز! حفظ متقن 🌿":sc>=60?"جيد! راجع الأخطاء وواصل 🌿":"لا بأس! المراجعة تصنع الإتقان 🌿")+'</p><button class="btn btn-primary" onclick="App.startQuiz()">إعادة الاختبار 🔁</button><button class="btn btn-ghost" onclick="App.go(\'home\')">العودة للرئيسية 🏠</button></div>';}
+  if(Q.i>=Q.qs.length){var sc=Math.round(Q.ok/Q.qs.length*100);var off=(339.3*(1-sc/100)).toFixed(1);return '<div class="card center"><h2>🎉 نتيجة الاختبار</h2><div class="score-wrap"><svg class="score-ring" width="150" height="150" viewBox="0 0 130 130"><defs><linearGradient id="goldgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4E5E2B"/><stop offset="1" stop-color="#C9A227"/></linearGradient></defs><circle class="bg" cx="65" cy="65" r="54" fill="none" stroke-width="12"/><circle class="fg" cx="65" cy="65" r="54" fill="none" stroke-width="12" stroke-dasharray="339.3" stroke-dashoffset="'+off+'"/><text x="65" y="64" text-anchor="middle" class="score-num">'+sc+'%</text><text x="65" y="86" text-anchor="middle" class="score-lbl">درجتك</text></svg></div><div class="stats3"><div class="stat"><b>'+Q.ok+'</b><span>صحيحة ✅</span></div><div class="stat"><b>'+Q.no+'</b><span>خاطئة ❌</span></div><div class="stat"><b>'+S.best+'%</b><span>أفضل درجة</span></div></div><p>'+(sc>=80?"ممتاز! حفظ متقن 🌿":sc>=60?"جيد! راجع الأخطاء وواصل 🌿":"لا بأس! المراجعة تصنع الإتقان 🌿")+'</p><button class="btn btn-primary" onclick="App.startQuiz()">إعادة الاختبار 🔁</button><button class="btn btn-ghost" onclick="App.go(\'home\')">العودة للرئيسية 🏠</button></div>';}
   var q=Q.qs[Q.i],h='<div class="card"><div class="muted">سؤال '+(Q.i+1)+' من '+Q.qs.length+'</div><div class="pbar"><div style="width:'+Math.round(Q.i/Q.qs.length*100)+'%"></div></div>';
   if(q.type==="c"){h+='<h2>📝 أكمل الآية</h2><div class="ayah"><span class="txt">'+q.prompt+' …</span> <span class="ref">'+sName(q.s)+" "+q.a+'</span></div>';q.opts.forEach(function(o,i){var cls="opt";if(Q.lock){cls+=" locked";if(o===q.ans)cls+=" correct";}h+='<div class="'+cls+'" onclick="App.answer('+i+')">'+o+'</div>';});}
   else if(q.type==="n"){h+='<h2>🔗 ما الآية التالية؟</h2><div class="ayah"><span class="txt">'+q.prompt+'</span> <span class="ref">'+sName(q.s)+" "+q.a+'</span></div>';q.opts.forEach(function(o,i){var cls="opt";if(Q.lock){cls+=" locked";if(o===q.ans)cls+=" correct";}h+='<div class="'+cls+'" onclick="App.answer('+i+')">'+o+'</div>';});}
